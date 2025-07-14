@@ -5,7 +5,7 @@
     "description": "Contacts API",
     "version": "1.0.0"
   },
-  "host": "https://byui-cse341-webservices.onrender.com",
+  "host": "byui-cse341-webservices.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
