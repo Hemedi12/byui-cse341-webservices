@@ -1,120 +1,37 @@
-### Get all contacts
-GET http://localhost:3000/contacts HTTP/1.1
-
-### Get contact by ID
-GET http://localhost:3000/contacts/68728a91cbb0c260b496017b HTTP/1.1
-
-### Create new contact 
-POST http://localhost:3000/contacts HTTP/1.1
-Content-Type: application/json
-
-{
-  "firstName": "Louis",
-  "lastName": "Gotera",
-  "email": "chemedi@example.com",
-  "favoriteColor": "Green",
-  "birthday": "1995-07-14T00:00:00Z"
-}
-
-### Create new contact (Emma)
-POST http://localhost:3000/contacts HTTP/1.1
-Content-Type: application/json
-
-{
-  "firstName": "Emma",
-  "lastName": "Wilson",
-  "email": "emma.wilson@example.com",
-  "favoriteColor": "Purple",
-  "birthday": "1990-11-22T00:00:00Z"
-}
-
-### Create new contact (James)
-POST http://localhost:3000/contacts HTTP/1.1
-Content-Type: application/json
-
-{
-  "firstName": "James",
-  "lastName": "Smith",
-  "email": "james.smith@example.com",
-  "favoriteColor": "Green",
-  "birthday": "1982-03-08T00:00:00Z"
-}
-
-### Update contact by ID
-PUT http://localhost:3000/contacts/6888cc69de8a8170abd95e0b HTTP/1.1
-Content-Type: application/json
-
-{
-  "firstName": "Sarah Hemedi",
-  "lastName": "Birch",
-  "email": "test@gmail.com",
-  "favoriteColor": "Green",
-  "birthday": "1978-09-30T00:00:00Z"
-}
-
-### Delete contact by ID
-<<<<<<< HEAD
-DELETE http://localhost:3000/contacts/68728a92cbb0c260b496017c HTTP/1.1
-
-#########################################################################
-
-
-### Get all books
+### Get all books (public)
 GET http://localhost:3000/books
 
-
-### Get book by id
-GET http://localhost:3000/books/68849a3ff58cff3932afb9e2
-
-
-
-
-
-### Create book
+### Create book (protected)
+# This will fail without the 'x-api-key' header
 POST http://localhost:3000/books HTTP/1.1
 content-type: application/json
 
 {
-
-  "title": "charles hemedi56",
-  "author": "F. Scott Fitzgerald",
-  "publication_year": 1925,
-  "genre": [
-    "Classic",
-    "Fiction"
-  ],
-  "pages": 218,
-  "publisher": "Scribner",
+  "title": "A Protected Book",
+  "author": "Secret Author",
+  "publication_year": 2024,
+  "genre": ["Mystery"],
+  "pages": 150,
+  "publisher": "Private Publisher",
   "language": "English",
-  "isbn": "9780743273565",
-  "rating": 4.2
+  "isbn": "9876543210987",
+  "rating": 5.0
 }
 
-
-
-### PUT book
-PUT http://localhost:3000/books/6888cd7bde8a8170abd95e0d HTTP/1.1
+### Create book (protected, with valid API key)
+# This will succeed
+POST http://localhost:3000/books HTTP/1.1
 content-type: application/json
+x-api-key: YOUR_SECRET_API_KEY
 
 {
-
-  
-  "title": "charles hemedi",
-  "author": "F. Scott Fitzgerald",
-  "publication_year": 1925,
-  "genre": ["Classic","Fiction"],
-  "pages": 21889,
-  "publisher": "Scribner",
+  "title": "A Protected Book",
+  "author": "Secret Author",
+  "publication_year": 2024,
+  "genre": ["Mystery"],
+  "pages": 150,
+  "publisher": "Private Publisher",
   "language": "English",
-  "isbn": "9780743273565",
-  "rating": 4.2,
-  "movie_adaptation": null,
-  "series": null
+  "isbn": "9876543210987",
+  "rating": 5.0
 }
-  
-
-### DELETE book
-DELETE http://localhost:3000/books/688865746dceea87a27e559f HTTP/1.1
-=======
-DELETE http://localhost:3000/contacts/68750559699de68e42843951 HTTP/1.1
->>>>>>> 8bff2a0ba2680129a2c72080d271ffc8cdebb26c
