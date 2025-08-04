@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
 const port = process.env.PORT || 3000;
 const app = express();
+const cors = require('cors');
 
 app
   .use(bodyParser.json())
@@ -16,6 +17,8 @@ app
     next();
   })
   .use('/', require('./routes'));
+
+  app.use(cors()); 
 
 // Error handling middleware should be after all other middleware and routes
 app.use((err, req, res, next) => {
