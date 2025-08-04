@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 const contactsController = require('../controllers/contacts');
 const validation = require('../middleware/validate');
 const auth = require('../middleware/auth'); // Import the auth middleware

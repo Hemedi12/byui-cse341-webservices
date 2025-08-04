@@ -6,7 +6,7 @@ const doc = {
     description: 'API for managing contacts and books, built for CSE341.'
   },
   host: `localhost:${process.env.PORT || 3000}`,
-  schemes: ['https'],
+  schemes: ['http'],
   tags: [
     {
       name: 'Contacts',

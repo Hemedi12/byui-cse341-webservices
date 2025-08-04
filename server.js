@@ -8,17 +8,20 @@ const cors = require('cors');
 
 app
   .use(bodyParser.json())
+  .use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'x-api-key']
+  }))
   .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    // It's good practice to allow specific headers if possible, or at least common ones.
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Z-Key');
-    // Allow methods used by your API
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
+    // This is an additional middleware to handle OPTIONS requests
+    if (req.method === 'OPTIONS') {
+      res.status(200).send();
+    } else {
+      next();
+    }
   })
   .use('/', require('./routes'));
-
-  app.use(cors()); 
 
 // Error handling middleware should be after all other middleware and routes
 app.use((err, req, res, next) => {
