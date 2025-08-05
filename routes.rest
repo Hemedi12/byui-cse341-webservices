@@ -1,37 +1,79 @@
-### Get all books (public)
-GET http://localhost:3000/books
+//LOCALHOST
+### Get all temples
+GET http://localhost:3000/temples
 
-### Create book (protected)
-# This will fail without the 'x-api-key' header
-POST http://localhost:3000/books HTTP/1.1
+### Get  temple by id
+GET http://localhost:3000/temples/687a875d3a3fcbf0fa6ceca7
+
+### Create temple
+
+POST http://localhost:3000/temples  HTTP/1.1
 content-type: application/json
 
 {
-  "title": "A Protected Book",
-  "author": "Secret Author",
-  "publication_year": 2024,
-  "genre": ["Mystery"],
-  "pages": 150,
-  "publisher": "Private Publisher",
-  "language": "English",
-  "isbn": "9876543210987",
-  "rating": 5.0
+    
+    "templeName": "Aba",
+    "country": "Nigeria",
+    "email" : "nigeriatemple@gmail.com",
+    "dateDedication": "7 August 2005",
+    "phone": "+234 0803 903 4810"
+    
+    
+
 }
 
-### Create book (protected, with valid API key)
-# This will succeed
-POST http://localhost:3000/books HTTP/1.1
+### PUT temple
+PUT http://localhost:3000/temples/687a89043a3fcbf0fa6ceca9 HTTP/1.1
 content-type: application/json
-x-api-key: YOUR_SECRET_API_KEY
 
 {
-  "title": "A Protected Book",
-  "author": "Secret Author",
-  "publication_year": 2024,
-  "genre": ["Mystery"],
-  "pages": 150,
-  "publisher": "Private Publisher",
-  "language": "English",
-  "isbn": "9876543210987",
-  "rating": 5.0
+  "templeName": "Aba",
+  "country": "Nigeria",
+  "email" : "nigeriatemple@gmail.com",
+  "dateDedication": "7 August 2005",
+  "phone": "+234 0803 903 480"
 }
+
+### DELETE temple
+DELETE http://localhost:3000/temples/687a89043a3fcbf0fa6ceca9"  HTTP/1.1
+
+
+
+
+### Get all places
+GET http://localhost:3000/places
+
+### Get  place by id
+GET http://localhost:3000/places/6887e16660016b44d1fbd410
+
+### Create place
+
+POST http://localhost:3000/places  HTTP/1.1
+content-type: application/json
+
+{
+    
+    "namePlace": "Altar",
+    "altitude": "2.234.m.s.m",
+    "email" :"altarplace@gmail.com",
+    "phone": "+ (23)4556677",
+    "sport": "Climbing"
+}
+
+### PUT temple
+PUT http://localhost:3000/places/6887e1ff60016b44d1fbd411 HTTP/1.1
+content-type: application/json
+
+{
+  "namePlace": "Altar",
+  "altitude": "2.234.m.s.m",
+  "email" :"altarplace@gmail.com",
+  "phone": "+ (23)4556677",
+  "sport": "Climbing"
+}
+
+### DELETE place
+DELETE http://localhost:3000/places/6887e1ff60016b44d1fbd411"  HTTP/1.1
+
+
+
